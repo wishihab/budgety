@@ -61,6 +61,19 @@ var budgetController = (function() {
       return newItem;
     },
 
+    deleteItem: function(type, id) {
+      var ids, index;
+      ids = data.allItems[type].map(function(current) {
+        return current.id;
+      });
+
+      index = ids.indexOf(id);
+
+      if (index !== -1) {
+        data.allItems[type].splice(index, 1);
+      }
+    },
+
     calculateBudget: function() {
       // 1. calculate total income and expenses
       calculateTotal('expense');
@@ -141,6 +154,12 @@ var UIController = (function() {
       document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
     },
 
+    //delete list from DOM
+    deleteListItem: function(selectorID) {
+      var el = document.getElementById(selectorID);
+      el.parentNode.removeChild(el);
+    },
+
     //clear input fields after adding item
     clearFields: function() {
       var fields, fieldsArr;
@@ -204,6 +223,15 @@ var controller = (function(budgetCtrl, UICtrl) {
     UICtrl.displayBudget(budget);
   };
 
+  var updatePercentages = function() {
+    // 1. Calculate the percentages of each item
+    
+    // 2. Read them from budget controller
+
+    // 3. Update UI
+
+  };
+
   //add item
   var ctrlAddItem = function() {
     var input, newItem;
@@ -224,6 +252,9 @@ var controller = (function(budgetCtrl, UICtrl) {
 
       // 5. Calculate and update budget
       updateBuget();
+
+      // 6. Calculate and update the percentages
+      updatePercentages();
     }
   };
 
@@ -232,17 +263,22 @@ var controller = (function(budgetCtrl, UICtrl) {
     var itemID, splitID, type, ID;
     itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
-    if(itemID) {
+    if (itemID) {
       splitID = itemID.split('-');
       type = splitID[0];
-      ID = splitID[1];
+      ID = parseInt(splitID[1]);
 
       // 1. Delete the item from data structure
+      budgetCtrl.deleteItem(type, ID);
 
       // 2. Delete the item from UI
+      UICtrl.deleteListItem(itemID);
 
       // 3. Update and show new budget
-      
+      updateBuget();
+
+      // 4. Calculate and update the percentages
+      updatePercentages();
     }
   };
 
