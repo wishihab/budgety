@@ -100,7 +100,12 @@ var UIController = (function() {
     inputValue: '.add__value',
     inputBtn: '.add__btn',
     incomeContainer: '.income__list',
-    expenseContainer: '.expenses__list'
+    expenseContainer: '.expenses__list',
+    budgetLabel: '.budget__value',
+    incomeLabel: '.budget__income--value',
+    expensesLabel: '.budget__expenses--value',
+    percentageLabel: '.budget__expenses--percentage',
+    container: '.container'
   };
 
   return {
@@ -152,6 +157,18 @@ var UIController = (function() {
       fieldsArr[0].focus();
     },
 
+    displayBudget: function(obj) {
+      document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
+      document.querySelector(DOMStrings.incomeLabel).textContent = obj.totalIncome;
+      document.querySelector(DOMStrings.expensesLabel).textContent = obj.totalExpense;
+
+      if (obj.percentage > 0) {
+        document.querySelector(DOMStrings.percentageLabel).textContent = obj.percentage + '%';
+      } else {
+        document.querySelector(DOMStrings.percentageLabel).textContent = '---';
+      }
+    },
+
     //public method to get DOM fields
     getDOMStrings: function() {
       return DOMStrings;
@@ -172,6 +189,7 @@ var controller = (function(budgetCtrl, UICtrl) {
         event.preventDefault();
       }
     });
+    document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
   };
 
   //update the budget
@@ -183,7 +201,7 @@ var controller = (function(budgetCtrl, UICtrl) {
     var budget = budgetCtrl.getBudget();
 
     // 7. Display the budget on the UI
-    console.log(budget);
+    UICtrl.displayBudget(budget);
   };
 
   //add item
@@ -209,10 +227,35 @@ var controller = (function(budgetCtrl, UICtrl) {
     }
   };
 
+  //delete item
+  var ctrlDeleteItem = function(event) {
+    var itemID, splitID, type, ID;
+    itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+
+    if(itemID) {
+      splitID = itemID.split('-');
+      type = splitID[0];
+      ID = splitID[1];
+
+      // 1. Delete the item from data structure
+
+      // 2. Delete the item from UI
+
+      // 3. Update and show new budget
+      
+    }
+  };
+
   return {
     //return public function to setup event listeners and start app
     init: function() {
       console.log('App has started.');
+      UICtrl.displayBudget({
+        budget: 0,
+        totalIncome: 0,
+        totalExpense: 0,
+        percentage: -1
+      });
       setupEventListeners();
     }
   };
