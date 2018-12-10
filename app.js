@@ -255,14 +255,27 @@ var UIController = (function() {
     displayMonth: function() {
       var now, year, month, months;
       now = new Date();
-      months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ];
       month = now.getMonth();
       year = now.getFullYear();
       document.querySelector(DOMStrings.dateLabel).textContent = months[month] + ' ' + year;
     },
 
     changedType: function() {
-      var fields  = document.querySelectorAll(
+      var fields = document.querySelectorAll(
         DOMStrings.inputType + ',' + DOMStrings.inputDescription + ',' + DOMStrings.inputValue
       );
 
@@ -271,8 +284,6 @@ var UIController = (function() {
       });
 
       document.querySelector(DOMStrings.inputBtn).classList.toggle('red');
-
-
     },
 
     //public method to get DOM fields
