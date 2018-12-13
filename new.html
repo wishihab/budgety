@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <svg
+      aria-hidden="true"
+      style="position: absolute; width: 0; height: 0; overflow: hidden;"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <defs>
+        <symbol id="icon-box-add" viewBox="0 0 32 32">
+          <title>box-add</title>
+          <path
+            d="M26 2h-20l-6 6v21c0 0.552 0.448 1 1 1h30c0.552 0 1-0.448 1-1v-21l-6-6zM16 26l-10-8h6v-6h8v6h6l-10 8zM4.828 6l2-2h18.343l2 2h-22.343z"
+          ></path>
+        </symbol>
+        <symbol id="icon-box-remove" viewBox="0 0 32 32">
+          <title>box-remove</title>
+          <path
+            d="M26 2h-20l-6 6v21c0 0.552 0.448 1 1 1h30c0.552 0 1-0.448 1-1v-21l-6-6zM20 20v6h-8v-6h-6l10-8 10 8h-6zM4.828 6l2-2h18.343l2 2h-22.343z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
     <meta charset="UTF-8" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" />
+    <link
+      href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link type="text/css" rel="stylesheet" href="new.css" />
     <title>Budgety</title>
   </head>
@@ -17,12 +43,17 @@
         </div>
         <div class="secondary-panel">
           <div class="secondary-panel__income">
-             <div class="secondary-panel__income-label">Income &DownArrow;</div>
-             <div class="secondary-panel__income-value">500&euro;</div>
+            <div class="secondary-panel__income-label">
+              Income
+              <svg class="icon icon-box-remove"><use xlink:href="#icon-box-add"></use></svg>
+            </div>
+            <div class="secondary-panel__income-value">500&euro;</div>
           </div>
           <div class="secondary-panel__expenses">
-              <div class="secondary-panel__income-label">Expenses &uparrow;</div>
-              <div class="secondary-panel__income-value">600&euro;</div>
+            <div class="secondary-panel__income-label">
+              Expenses <svg class="icon icon-box-add"><use xlink:href="#icon-box-remove"></use></svg>
+            </div>
+            <div class="secondary-panel__income-value">600&euro;</div>
           </div>
         </div>
       </div>
@@ -33,57 +64,57 @@
             <div class="panel__item__details-date">5 October</div>
           </div>
           <div class="panel__item__value">
-              <div class="panel__item__value-number">50&euro;</div>
+            <div class="panel__item__value-number">50&euro;</div>
           </div>
         </div>
         <div class="panel__item panel__item-expense">
-            <div class="panel__item__details">
-                <div class="panel__item__details-name">Uber ride</div>
-                <div class="panel__item__details-date">5 October</div>
-              </div>
-              <div class="panel__item__value">
-                  <div class="panel__item__value-number">50&euro;</div>
-                  <div class="panel__item__value-percentage">5%</div>
-              </div>
+          <div class="panel__item__details">
+            <div class="panel__item__details-name">Uber ride</div>
+            <div class="panel__item__details-date">5 October</div>
           </div>
-          <div class="panel__item panel__item-expense">
-              <div class="panel__item__details">
-                  <div class="panel__item__details-name">Uber ride</div>
-                  <div class="panel__item__details-date">5 October</div>
-                </div>
-                <div class="panel__item__value">
-                    <div class="panel__item__value-number">50&euro;</div>
-                    <div class="panel__item__value-percentage">5%</div>
-                </div>
-            </div>
-            <div class="panel__item panel__item-expense">
-                <div class="panel__item__details">
-                    <div class="panel__item__details-name">Uber ride</div>
-                    <div class="panel__item__details-date">5 October</div>
-                  </div>
-                  <div class="panel__item__value">
-                      <div class="panel__item__value-number">50&euro;</div>
-                      <div class="panel__item__value-percentage">5%</div>
-                  </div>
-              </div>
-              <div class="panel__item panel__item-income">
-                  <div class="panel__item__details">
-                    <div class="panel__item__details-name">Uber ride</div>
-                    <div class="panel__item__details-date">5 October</div>
-                  </div>
-                  <div class="panel__item__value">
-                      <div class="panel__item__value-number">50&euro;</div>
-                  </div>
-                </div>
-                <div class="panel__item panel__item-income">
-                    <div class="panel__item__details">
-                      <div class="panel__item__details-name">Uber ride</div>
-                      <div class="panel__item__details-date">5 October</div>
-                    </div>
-                    <div class="panel__item__value">
-                        <div class="panel__item__value-number">50&euro;</div>
-                    </div>
-                  </div>
+          <div class="panel__item__value">
+            <div class="panel__item__value-number">50&euro;</div>
+            <div class="panel__item__value-percentage">5%</div>
+          </div>
+        </div>
+        <div class="panel__item panel__item-expense">
+          <div class="panel__item__details">
+            <div class="panel__item__details-name">Uber ride</div>
+            <div class="panel__item__details-date">5 October</div>
+          </div>
+          <div class="panel__item__value">
+            <div class="panel__item__value-number">50&euro;</div>
+            <div class="panel__item__value-percentage">5%</div>
+          </div>
+        </div>
+        <div class="panel__item panel__item-expense">
+          <div class="panel__item__details">
+            <div class="panel__item__details-name">Uber ride</div>
+            <div class="panel__item__details-date">5 October</div>
+          </div>
+          <div class="panel__item__value">
+            <div class="panel__item__value-number">50&euro;</div>
+            <div class="panel__item__value-percentage">5%</div>
+          </div>
+        </div>
+        <div class="panel__item panel__item-income">
+          <div class="panel__item__details">
+            <div class="panel__item__details-name">Uber ride</div>
+            <div class="panel__item__details-date">5 October</div>
+          </div>
+          <div class="panel__item__value">
+            <div class="panel__item__value-number">50&euro;</div>
+          </div>
+        </div>
+        <div class="panel__item panel__item-income">
+          <div class="panel__item__details">
+            <div class="panel__item__details-name">Uber ride</div>
+            <div class="panel__item__details-date">5 October</div>
+          </div>
+          <div class="panel__item__value">
+            <div class="panel__item__value-number">50&euro;</div>
+          </div>
+        </div>
       </div>
     </div>
     <script src="app.js"></script>

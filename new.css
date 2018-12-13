@@ -19,7 +19,7 @@
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
 
-  --line: 1px solid rgba(255,255,255,.3);
+  --line: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 * {
@@ -116,15 +116,23 @@ body {
 
 .secondary-panel__income {
   color: var(--color-green);
+  flex: 1;
 }
 
 .secondary-panel__expenses {
   color: var(--color-red);
+  flex: 1;
 }
 
 .secondary-panel__income-value {
   font-weight: 500;
   color: var(--color-grey-light-2);
+}
+
+.secondary-panel__income-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
 }
 
 .panel {
@@ -181,4 +189,11 @@ body {
 
 .panel__item-expense .panel__item__value {
   color: var(--color-red);
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 1rem;
+  fill: currentColor;
 }
