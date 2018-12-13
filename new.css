@@ -1,0 +1,178 @@
+:root {
+  --color-primary: #1a1c3e;
+  --color-primary-light: #454666;
+  --color-primary-dark: #12142c;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --color-green: #62c15d;
+  --color-red: #d65555;
+  --color-white: #fff;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+  --line: 1px solid rgba(255,255,255,.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 68.75em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  color: var(--color-grey-light-1);
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  /*background-color: var(--color-white);*/
+  width: 100%;
+  padding: 4rem;
+  max-width: 90rem;
+  min-height: 100vh;
+}
+
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+}
+
+.summary {
+  line-height: 1;
+  margin-bottom: 4rem;
+}
+
+.summary__month {
+  font-size: 1.5rem;
+  color: var(--color-grey-light-4);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.summary__budget {
+  font-weight: 700;
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.summary__label {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.secondary-panel {
+  display: flex;
+  justify-content: space-evenly;
+  color: var(--color-green);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.secondary-panel__income {
+  color: var(--color-green);
+}
+
+.secondary-panel__expenses {
+  color: var(--color-red);
+}
+
+.secondary-panel__income-value {
+  font-weight: 300;
+  color: var(--color-grey-light-2);
+}
+
+.panel {
+  padding: 2rem;
+}
+
+.panel__item {
+  display: flex;
+  padding: 2rem;
+  align-items: center;
+}
+
+.panel__item:not(:last-child) {
+  border-bottom: var(--line);
+}
+
+.panel__item__details {
+  flex: 1;
+  line-height: 1;
+}
+
+.panel__item__details-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.panel__item__details-date {
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  opacity: 0.8;
+}
+
+.panel__item__value {
+  text-align: right;
+}
+
+.panel__item__value-number {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.panel__item__value-percentage {
+  font-size: 1.2rem;
+}
+
+.panel__item-income .panel__item__value {
+  color: var(--color-green);
+}
+
+.panel__item-expense .panel__item__value {
+  color: var(--color-red);
+}
