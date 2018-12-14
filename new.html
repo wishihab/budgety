@@ -31,11 +31,7 @@
     </svg>
     <meta charset="UTF-8" />
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" />
-    <link
-      href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link type="text/css" rel="stylesheet" href="new.css" />
     <title>Budgety</title>
   </head>
@@ -50,7 +46,7 @@
         <div class="secondary-panel">
           <div class="secondary-panel__income">
             <div class="secondary-panel__income-label">
-              Income <svg class="icon icon-box-remove"><use xlink:href="#icon-box-add"></use></svg>
+              Income <svg class="icon icon-box-remove"><use xlink:href="#icon-box-remove"></use></svg>
             </div>
             <div class="secondary-panel__income-value">500&euro;</div>
           </div>
@@ -62,20 +58,14 @@
           </div>
           <div class="secondary-panel__expenses">
             <div class="secondary-panel__income-label">
-              Expenses
-              <svg class="icon icon-box-add"><use xlink:href="#icon-box-remove"></use></svg>
+              Expenses <svg class="icon icon-box-add"><use xlink:href="#icon-box-add"></use></svg>
             </div>
             <div class="secondary-panel__income-value">600&euro;</div>
           </div>
         </div>
         <div class="input">
           <div class="input__description">
-            <input
-              type="text"
-              id="description"
-              class="add__description form__input"
-              placeholder="Add description"
-            />
+            <input type="text" id="description" class="add__description form__input" placeholder="Add description" />
             <label for="description" class="form__label">Add a description</label>
           </div>
           <div class="input__value">
@@ -83,10 +73,11 @@
             <label for="value" class="form__label">Value</label>
           </div>
           <div class="input__submit">
+            <button class="add__btn">
               <svg class="icon icon-checkmark"><use xlink:href="#icon-checkmark"></use></svg>
+            </button>
           </div>
         </div>
-        <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
       </div>
       <div class="panel">
         <div class="panel__item panel__item-income">
@@ -94,9 +85,7 @@
             <div class="panel__item__details-name">Uber ride</div>
             <div class="panel__item__details-date">5 October</div>
           </div>
-          <div class="panel__item__value">
-            <div class="panel__item__value-number">50&euro;</div>
-          </div>
+          <div class="panel__item__value"><div class="panel__item__value-number">50&euro;</div></div>
         </div>
         <div class="panel__item panel__item-expense">
           <div class="panel__item__details">
@@ -133,18 +122,14 @@
             <div class="panel__item__details-name">Uber ride</div>
             <div class="panel__item__details-date">5 October</div>
           </div>
-          <div class="panel__item__value">
-            <div class="panel__item__value-number">50&euro;</div>
-          </div>
+          <div class="panel__item__value"><div class="panel__item__value-number">50&euro;</div></div>
         </div>
         <div class="panel__item panel__item-income">
           <div class="panel__item__details">
             <div class="panel__item__details-name">Uber ride</div>
             <div class="panel__item__details-date">5 October</div>
           </div>
-          <div class="panel__item__value">
-            <div class="panel__item__value-number">50&euro;</div>
-          </div>
+          <div class="panel__item__value"><div class="panel__item__value-number">50&euro;</div></div>
         </div>
       </div>
     </div>

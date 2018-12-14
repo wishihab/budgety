@@ -50,11 +50,7 @@ body {
   letter-spacing: 1px;
   line-height: 1.6;
   color: var(--color-grey-light-1);
-  background-image: linear-gradient(
-    to right bottom,
-    var(--color-primary-light),
-    var(--color-primary-dark)
-  );
+  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -211,27 +207,46 @@ body {
 .input__description {
   flex: 3;
   text-align: left;
-  margin-left: 2rem;
 }
 
 .input__value {
   flex: 1;
-  margin-left: 2rem;
   text-align: left;
 }
 
-.input>div:not(:last-child) {
-  margin-right: 5rem;
-}
-
 .input__submit {
-  margin-left: 2rem;
 }
 
-.input__submit svg{
+.input > div:not(:last-child) {
+  margin-right: 2rem;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  line-height: 1;
+  display: flex;
+}
+
+button:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.input__submit svg {
   fill: var(--color-green);
   width: 3rem;
   height: 3rem;
+  transition: all 0.3s;
+}
+
+input[type='checkbox']:checked + .input__submit svg {
+  fill: var(--color-red);
 }
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -249,8 +264,6 @@ body {
   color: var(--color-grey-light-4);
 }
 
-input:focus 		{ outline:none; }
-
 .form__input {
   font-family: 'Lato', sans-serif;
   width: 100%;
@@ -258,12 +271,12 @@ input:focus 		{ outline:none; }
   background-color: transparent;
   border: none;
   display: block;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  font-weight: 500;
   color: var(--color-grey-light-4);
   transition: all 0.3s;
-  border-bottom: 2px solid rgba(98,193,93, 0.6);
+  border-bottom: 2px solid rgba(98, 193, 93, 0.6);
   /*rgba(217, 85, 81, 0.6)*/
-  
 }
 
 .form__label {
