@@ -9,6 +9,12 @@
       xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <defs>
+        <symbol id="icon-checkmark" viewBox="0 0 32 32">
+          <title>checkmark</title>
+          <path
+            d="M28.998 8.531l-2.134-2.134c-0.394-0.393-1.030-0.393-1.423 0l-12.795 12.795-6.086-6.13c-0.393-0.393-1.029-0.393-1.423 0l-2.134 2.134c-0.393 0.394-0.393 1.030 0 1.423l8.924 8.984c0.393 0.393 1.030 0.393 1.423 0l15.648-15.649c0.393-0.392 0.393-1.030 0-1.423z"
+          ></path>
+        </symbol>
         <symbol id="icon-box-add" viewBox="0 0 32 32">
           <title>box-add</title>
           <path
@@ -44,18 +50,43 @@
         <div class="secondary-panel">
           <div class="secondary-panel__income">
             <div class="secondary-panel__income-label">
-              Income
-              <svg class="icon icon-box-remove"><use xlink:href="#icon-box-add"></use></svg>
+              Income <svg class="icon icon-box-remove"><use xlink:href="#icon-box-add"></use></svg>
             </div>
             <div class="secondary-panel__income-value">500&euro;</div>
           </div>
+          <div class="input__type">
+            <label class="switch" for="checkbox">
+              <input type="checkbox" id="checkbox" />
+              <div class="slider round"></div>
+            </label>
+          </div>
           <div class="secondary-panel__expenses">
             <div class="secondary-panel__income-label">
-              Expenses <svg class="icon icon-box-add"><use xlink:href="#icon-box-remove"></use></svg>
+              Expenses
+              <svg class="icon icon-box-add"><use xlink:href="#icon-box-remove"></use></svg>
             </div>
             <div class="secondary-panel__income-value">600&euro;</div>
           </div>
         </div>
+        <div class="input">
+          <div class="input__description">
+            <input
+              type="text"
+              id="description"
+              class="add__description form__input"
+              placeholder="Add description"
+            />
+            <label for="description" class="form__label">Add a description</label>
+          </div>
+          <div class="input__value">
+            <input type="number" id="value" class="add__value form__input" placeholder="Value" />
+            <label for="value" class="form__label">Value</label>
+          </div>
+          <div class="input__submit">
+              <svg class="icon icon-checkmark"><use xlink:href="#icon-checkmark"></use></svg>
+          </div>
+        </div>
+        <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
       </div>
       <div class="panel">
         <div class="panel__item panel__item-income">
