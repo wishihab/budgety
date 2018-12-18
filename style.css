@@ -38,20 +38,6 @@ html {
   font-size: 62.5%;
 }
 
-@media only screen and (max-width: 68.75em) {
-  html {
-    font-size: 120%;
-  }
-
-  .item__delete--btn {
-    display: block;
-  }
-
-  .panel__item:hover .panel__item__value {
-    transform: translateX(0px);
-  }
-}
-
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
@@ -382,4 +368,19 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+@media only screen and (max-width: 68.75em) {
+  html {
+    font-size: 120%;
+  }
+
+  .item__delete--btn {
+    display: block !important;
+  }
+
+  .panel__item:hover .panel__item__value {
+    transform: translateX(0px);
+  }
 }
