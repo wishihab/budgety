@@ -200,7 +200,7 @@ body {
 }
 
 .panel__item:hover .item__delete--btn {
-  display: block;
+  display: flex;
 }
 .panel__item:hover .panel__item__value {
   transform: translateX(-10px);
@@ -377,7 +377,7 @@ input:checked + .slider:before {
   }
 
   .item__delete--btn {
-    display: block !important;
+    display: flex !important;
   }
 
   .panel__item:hover .panel__item__value {
