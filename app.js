@@ -125,6 +125,26 @@ var budgetController = (function() {
       };
     },
 
+    // --- Local Storage stuff ---
+    storeData: function() {
+      localStorage.setItem('data', JSON.stringify(data));
+    },
+
+    deleteData: function() {
+      localStorage.removeItem('data');
+    },
+
+    getStoredData: function() {
+      localData = JSON.parse(localStorage.getItem('data'));
+      return localData;
+    },
+
+    updateData: function(StoredData) {
+      data.totals = StoredData.totals;
+      data.budget = StoredData.budget;
+      data.percentage = StoredData.percentage;
+    },
+
     testing: function() {
       console.log(data);
     }
@@ -134,19 +154,19 @@ var budgetController = (function() {
 //UI CONTROLLER
 var UIController = (function() {
   var DOMStrings = {
-    inputType: '.add__type',
+    inputType: '#checkbox',
     inputDescription: '.add__description',
     inputValue: '.add__value',
     inputBtn: '.add__btn',
-    incomeContainer: '.income__list',
-    expenseContainer: '.expenses__list',
-    budgetLabel: '.budget__value',
-    incomeLabel: '.budget__income--value',
-    expensesLabel: '.budget__expenses--value',
-    percentageLabel: '.budget__expenses--percentage',
-    container: '.container',
-    expensesPercLabel: '.item__percentage',
-    dateLabel: '.budget__title--month'
+    budgetLabel: '.summary__budget',
+    incomeLabel: '.secondary-panel__income-value',
+    expensesLabel: '.secondary-panel__expenses-value',
+    percentageLabel: '.secondary-panel__expenses-percentage',
+    //incomeContainer: '.income__list',
+    //expenseContainer: '.expenses__list',
+    container: '.panel',
+    expensesPercLabel: '.panel__item__value-percentage',
+    dateLabel: '.summary__month'
   };
 
   //Accepts a number and a type, and changes the sign to -/+ accordingly
@@ -169,7 +189,7 @@ var UIController = (function() {
     //public method to get input from fields
     getInput: function() {
       return {
-        type: document.querySelector(DOMStrings.inputType).value, // will be either 'inc' or 'exp'
+        type: document.querySelector(DOMStrings.inputType).checked ? 'expense' : 'income', // will be either 'inc' or 'exp'
         description: document.querySelector(DOMStrings.inputDescription).value,
         value: parseFloat(document.querySelector(DOMStrings.inputValue).value)
       };
@@ -180,13 +200,13 @@ var UIController = (function() {
       var html, newHtml, element;
       //Create HTMl string with placeholder text
       if (type === 'income') {
-        element = DOMStrings.incomeContainer;
+        element = DOMStrings.container;
         html =
-          '<div class="item clearfix" id="income-%id%"><div class="item__description">%desc%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+          '<div class="panel__item panel__item-income" id="income-%id%"><div class="panel__item__details"><div class="panel__item__details-name">%desc%</div></div><div class="panel__item__value"><div class="panel__item__value-number">%value%</div></div><div class="panel__item__btn"><button class="item__delete--btn"> <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button></div></div>';
       } else if (type === 'expense') {
-        element = DOMStrings.expenseContainer;
+        element = DOMStrings.container;
         html =
-          '<div class="item clearfix" id="expense-%id%"><div class="item__description">%desc%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+          '<div class="panel__item panel__item-expense" id="expense-%id%"><div class="panel__item__details"><div class="panel__item__details-name">%desc%</div></div><div class="panel__item__value"><div class="panel__item__value-number">%value%</div><div class="panel__item__value-percentage">5%</div></div><div class="panel__item__btn"><button class="item__delete--btn"> <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button></div></div>';
       }
 
       //Replace Placeholder text with data
@@ -195,7 +215,7 @@ var UIController = (function() {
       newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
 
       //Insert the HTML into the DOM
-      document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
+      document.querySelector(element).insertAdjacentHTML('afterbegin', newHtml);
     },
 
     //delete list from DOM
@@ -280,7 +300,8 @@ var UIController = (function() {
       );
 
       Array.prototype.forEach.call(fields, function(current) {
-        current.classList.toggle('red-focus');
+        current.classList.toggle('red');
+        current.classList.toggle('red-border');
       });
 
       document.querySelector(DOMStrings.inputBtn).classList.toggle('red');
@@ -308,6 +329,37 @@ var controller = (function(budgetCtrl, UICtrl) {
     });
     document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
+  };
+
+  var loadData = function() {
+    var storedData, newIncItem, newExpItem;
+
+    // 1. load the data from the local storage
+    storedData = budgetCtrl.getStoredData();
+
+    if (storedData) {
+      // 2. insert the data into the data structure
+      budgetCtrl.updateData(storedData);
+
+      // 3. Create the Income Object
+      storedData.allItems.income.forEach(function(cur) {
+        newIncItem = budgetCtrl.addItem('income', cur.description, cur.value);
+        UICtrl.addListItem(newIncItem, 'income');
+      });
+
+      // 4. Create the Expense Objects
+      storedData.allItems.expense.forEach(function(cur) {
+        newExpItem = budgetCtrl.addItem('expense', cur.description, cur.value);
+        UICtrl.addListItem(newExpItem, 'expense');
+      });
+
+      // 5. Display the Budget
+      budget = budgetCtrl.getBudget();
+      UICtrl.displayBudget(budget);
+
+      // 6. Display the Percentages
+      updatePercentages();
+    }
   };
 
   //update the budget
@@ -356,6 +408,9 @@ var controller = (function(budgetCtrl, UICtrl) {
 
       // 6. Calculate and update the percentages
       updatePercentages();
+
+      // 7. save to local storage
+      budgetCtrl.storeData();
     }
   };
 
@@ -380,8 +435,13 @@ var controller = (function(budgetCtrl, UICtrl) {
 
       // 4. Calculate and update the percentages
       updatePercentages();
+
+      // 5. save to local storage
+      budgetCtrl.storeData();
     }
   };
+
+
 
   return {
     //return public function to setup event listeners and start app
@@ -395,6 +455,7 @@ var controller = (function(budgetCtrl, UICtrl) {
         percentage: -1
       });
       setupEventListeners();
+      loadData();
     }
   };
 })(budgetController, UIController);

@@ -1,121 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <svg
+      aria-hidden="true"
+      style="position: absolute; width: 0; height: 0; overflow: hidden;"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <defs>
+        <symbol id="icon-checkmark" viewBox="0 0 32 32">
+          <title>checkmark</title>
+          <path
+            d="M28.998 8.531l-2.134-2.134c-0.394-0.393-1.030-0.393-1.423 0l-12.795 12.795-6.086-6.13c-0.393-0.393-1.029-0.393-1.423 0l-2.134 2.134c-0.393 0.394-0.393 1.030 0 1.423l8.924 8.984c0.393 0.393 1.030 0.393 1.423 0l15.648-15.649c0.393-0.392 0.393-1.030 0-1.423z"
+          ></path>
+        </symbol>
+        <symbol id="icon-cross" viewBox="0 0 20 20">
+          <title>cross</title>
+          <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
+          </symbol>
+        <symbol id="icon-box-add" viewBox="0 0 32 32">
+          <title>box-add</title>
+          <path
+            d="M26 2h-20l-6 6v21c0 0.552 0.448 1 1 1h30c0.552 0 1-0.448 1-1v-21l-6-6zM16 26l-10-8h6v-6h8v6h6l-10 8zM4.828 6l2-2h18.343l2 2h-22.343z"
+          ></path>
+        </symbol>
+        <symbol id="icon-box-remove" viewBox="0 0 32 32">
+          <title>box-remove</title>
+          <path
+            d="M26 2h-20l-6 6v21c0 0.552 0.448 1 1 1h30c0.552 0 1-0.448 1-1v-21l-6-6zM20 20v6h-8v-6h-6l10-8 10 8h-6zM4.828 6l2-2h18.343l2 2h-22.343z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
     <meta charset="UTF-8" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" />
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link type="text/css" rel="stylesheet" href="style.css" />
     <title>Budgety</title>
   </head>
   <body>
-    <div class="top">
-      <div class="budget">
-        <div class="budget__title">
-          Available Budget in <span class="budget__title--month">%Month%</span>:
+    <div class="container">
+      <div class="main-panel">
+        <div class="summary">
+          <div class="summary__month">October</div>
+          <div class="summary__budget">345&euro;</div>
+          <div class="summary__label">Available budget</div>
         </div>
-
-        <div class="budget__value">+ 2,345.64</div>
-
-        <div class="budget__income clearfix">
-          <div class="budget__income--text">Income</div>
-          <div class="right">
-            <div class="budget__income--value">+ 4,300.00</div>
-            <div class="budget__income--percentage">&nbsp;</div>
+        <div class="secondary-panel">
+          <div class="secondary-panel__income">
+            <div class="secondary-panel__income-label">
+              Income <svg class="icon icon-box-remove"><use xlink:href="#icon-box-remove"></use></svg>
+            </div>
+            <div class="secondary-panel__income-value">500&euro;</div>
+          </div>
+          <div class="input__type">
+            <label class="switch" for="checkbox">
+              <input type="checkbox" id="checkbox" />
+              <div class="slider round"></div>
+            </label>
+          </div>
+          <div class="secondary-panel__expenses">
+            <div class="secondary-panel__expenses-label">
+              Expenses <svg class="icon icon-box-add"><use xlink:href="#icon-box-add"></use></svg>
+            </div>
+            <div class="secondary-panel__expenses-value">600&euro;</div>
+            <div class="secondary-panel__expenses-percentage">10%</div>
           </div>
         </div>
-
-        <div class="budget__expenses clearfix">
-          <div class="budget__expenses--text">Expenses</div>
-          <div class="right clearfix">
-            <div class="budget__expenses--value">- 1,954.36</div>
-            <div class="budget__expenses--percentage">45%</div>
+        <div class="input">
+          <div class="input__description">
+            <input type="text" id="description" class="add__description form__input" placeholder="Add description" />
+            <label for="description" class="form__label">Add a description</label>
+          </div>
+          <div class="input__value">
+            <input type="number" id="value" class="add__value form__input" placeholder="Value" />
+            <label for="value" class="form__label">Value</label>
+          </div>
+          <div class="input__submit">
+            <button class="add__btn">
+              <svg class="icon icon-checkmark"><use xlink:href="#icon-checkmark"></use></svg>
+            </button>
           </div>
         </div>
+      </div>
+      <div class="panel">
+
       </div>
     </div>
-
-    <div class="bottom">
-      <div class="add">
-        <div class="add__container">
-          <select class="add__type">
-            <option value="income" selected>+</option>
-            <option value="expense">-</option>
-          </select>
-          <input type="text" class="add__description" placeholder="Add description" />
-          <input type="number" class="add__value" placeholder="Value" />
-          <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
-        </div>
-      </div>
-
-      <div class="container clearfix">
-        <div class="income">
-          <h2 class="icome__title">Income</h2>
-
-          <div class="income__list">
-            <!--
-              <div class="item clearfix" id="income-0">
-                  <div class="item__description">Salary</div>
-                  <div class="right clearfix">
-                      <div class="item__value">+ 2,100.00</div>
-                      <div class="item__delete">
-                          <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="item clearfix" id="income-1">
-                  <div class="item__description">Sold car</div>
-                  <div class="right clearfix">
-                      <div class="item__value">+ 1,500.00</div>
-                      <div class="item__delete">
-                          <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                      </div>
-                  </div>
-              </div>
-            -->
-          </div>
-        </div>
-
-        <div class="expenses">
-          <h2 class="expenses__title">Expenses</h2>
-
-          <div class="expenses__list">
-            <!--
-              <div class="item clearfix" id="expense-0">
-                  <div class="item__description">Apartment rent</div>
-                  <div class="right clearfix">
-                      <div class="item__value">- 900.00</div>
-                      <div class="item__percentage">21%</div>
-                      <div class="item__delete">
-                          <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="item clearfix" id="expense-1">
-                  <div class="item__description">Grocery shopping</div>
-                  <div class="right clearfix">
-                      <div class="item__value">- 435.28</div>
-                      <div class="item__percentage">10%</div>
-                      <div class="item__delete">
-                          <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                      </div>
-                  </div>
-              </div>
-            -->
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script src="app.js"></script>
   </body>
 </html>
