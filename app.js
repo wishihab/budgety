@@ -202,11 +202,11 @@ var UIController = (function() {
       if (type === 'income') {
         element = DOMStrings.container;
         html =
-          '<div class="panel__item panel__item-income" id="income-%id%"><div class="panel__item__details"><div class="panel__item__details-name">%desc%</div></div><div class="panel__item__value"><div class="panel__item__value-number">%value%</div></div><div class="panel__item__btn"><button class="item__delete--btn"><svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button></div></div>';
+          '<div class="panel__item panel__item-income" id="income-%id%"><div class="panel__item__details"><div class="panel__item__details-name">%desc%</div></div><div class="panel__item__value"><div class="panel__item__value-number">%value%</div></div><button class="item__delete--btn"><svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button></div>';
       } else if (type === 'expense') {
         element = DOMStrings.container;
         html =
-          '<div class="panel__item panel__item-expense" id="expense-%id%"><div class="panel__item__details"><div class="panel__item__details-name">%desc%</div></div><div class="panel__item__value"><div class="panel__item__value-number">%value%</div><div class="panel__item__value-percentage">5%</div></div><div class="panel__item__btn"><button class="item__delete--btn"> <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button></div></div>';
+          '<div class="panel__item panel__item-expense" id="expense-%id%"><div class="panel__item__details"><div class="panel__item__details-name">%desc%</div></div><div class="panel__item__value"><div class="panel__item__value-number">%value%</div><div class="panel__item__value-percentage">5%</div></div><button class="item__delete--btn"> <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button></div>';
       }
 
       //Replace Placeholder text with data
@@ -417,8 +417,9 @@ var controller = (function(budgetCtrl, UICtrl) {
   //delete item
   var ctrlDeleteItem = function(event) {
     var itemID, splitID, type, ID;
-    itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
-
+    console.log(event);
+    itemID = event.target.parentNode.id;
+    console.log(itemID);
     if (itemID) {
       splitID = itemID.split('-');
       type = splitID[0];

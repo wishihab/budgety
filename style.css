@@ -42,6 +42,14 @@ html {
   html {
     font-size: 120%;
   }
+
+  .item__delete--btn {
+    display: block;
+  }
+
+  .panel__item:hover .panel__item__value {
+    transform: translateX(0px);
+  }
 }
 
 body {
@@ -50,11 +58,7 @@ body {
   letter-spacing: 1px;
   line-height: 1.6;
   color: var(--color-grey-light-1);
-  background-image: linear-gradient(
-    to right bottom,
-    var(--color-primary-light),
-    var(--color-primary-dark)
-  );
+  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -249,6 +253,10 @@ button {
   border: none;
   line-height: 1;
   display: flex;
+}
+
+button svg {
+  pointer-events: none;
 }
 
 button:focus {
