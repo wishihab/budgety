@@ -202,7 +202,7 @@ var UIController = (function() {
       if (type === 'income') {
         element = DOMStrings.container;
         html =
-          '<div class="panel__item panel__item-income" id="income-%id%"><div class="panel__item__details"><div class="panel__item__details-name">%desc%</div></div><div class="panel__item__value"><div class="panel__item__value-number">%value%</div></div><div class="panel__item__btn"><button class="item__delete--btn"> <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button></div></div>';
+          '<div class="panel__item panel__item-income" id="income-%id%"><div class="panel__item__details"><div class="panel__item__details-name">%desc%</div></div><div class="panel__item__value"><div class="panel__item__value-number">%value%</div></div><div class="panel__item__btn"><button class="item__delete--btn"><svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg></button></div></div>';
       } else if (type === 'expense') {
         element = DOMStrings.container;
         html =
